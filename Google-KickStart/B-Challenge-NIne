@@ -1,0 +1,128 @@
+#include <bits/stdc++.h>
+using namespace std ;
+#define ll long long int
+#define ld     long double
+#define endll "\n"
+#define pb push_back
+#define ppb pop_back
+#define mp make_pair
+#define ff first
+#define ss second
+#define sz(x) ((int)(x).size())
+#define all(c) c.begin(), c.end()
+#define fastio ios_base::sync_with(false); cin.tie(0);cout.tie(0);
+ int mod =1e9+7;
+#define vi                  vector<int>
+#define ps(x,y)             fixed<<setprecision(y)<<x
+
+#define setbits(x)          __builtin_popcountll(x)
+#define FIO                 ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0)
+
+ // 48-57 ->  0-9
+ // 65-90 ->  A-Z
+ // 97-122 -> a-z
+ 
+// lower = lower_bound(v.begin(), v.end(), 6) - v.begin();  //first element with value >= 6
+// upper = upper_bound(v.begin(), v.end(), 6) - v.begin();  //first element with value > 6 
+
+// https://usaco.guide/PAPS.pdf#page=99
+// https://usaco.guide/CPH.pdf#page=27
+// https://darrenyao.com/usacobook/cpp.pdf#page=12
+
+
+      
+void solve(int &v) {
+	
+	cout<<"Case #"<<v<<": " ;
+	
+	  
+	string s ;
+	cin>>s ;
+	int n= s.size() ;
+	ll sum = 0 ;
+	// find the sum of digits first
+	for(auto x:s) sum += x-48 ;
+	
+	// find the no. that needs to added such that sum %9 ==0
+    int no = 9 - sum%9 ;
+
+   // edge case : what if N is already diviible by 9 
+   // for that we cannot print 0 at first so we will print it after 1st digit
+   if(no==9) {
+   	cout<<s[0] ;
+   	cout<<0 ;
+   	for(int i=1 ;i<n ;i++) cout<<s[i] ;
+   	cout<<endl ;
+   	return ;
+   }
+   
+   //  now i know the integer to be added 
+   // now i need to think of the position before which it should be printed
+   
+   // for that whenever i will find a digit > than the no i will print it before that
+   // digit else if all are small or equal i will print it at last
+   bool isInserted = false ;
+   
+   for(int i=0 ;i<n ;i++) {
+   	   
+   	   int digit = s[i]-48 ;
+   	   
+   	   if(digit>no and !isInserted) {
+   	   	cout<<no ;
+   	   	cout<<digit ;
+   	   	isInserted = true ;
+   	   }
+   	   else cout<<digit ;
+   	  
+   }
+   if(!isInserted) cout<<no<<endl ;
+   else cout<<endl ;
+   return ;
+    
+}
+ 
+ 
+ int main() {
+ 	
+ 	FIO ;
+ 	
+ 	int t ;
+ 	int i=1 ;
+ 	cin>>t ;
+ 	while(i<=t) {
+ 		
+ 	 solve(i) ;
+ 	 i++ ;
+      
+ 	}
+ 			  
+ 			
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ }
